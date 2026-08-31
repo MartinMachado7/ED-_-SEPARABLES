@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Analizador de ED Separables</title>
   
-  <link rel="icon" type="image/svg+xml" href="./logo.jpg">
+  <link rel="icon" type="image/svg+xml" href="logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="src/style.css">
+
+  <!-- Carga de librerías vía CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/algebrite@1.4.0/dist/algebrite.bundle-for-browser.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+  <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
 </head>
 <body>
   <div class="container">
@@ -23,10 +28,10 @@
       <!-- Panel de Entrada unica -->
       <div class="controls-card">
         <h2>Entrada de Datos</h2>
-        <p class="instruction">Ecuacion de la forma: <code>dy/dx = F(x, y)</code></p>
+        <p class="instruction">Ecuación de la forma: <code>dy/dx = F(x, y)</code></p>
         
         <div class="form-group">
-          <label for="fxy-input">Expresion F(x, y):</label>
+          <label for="fxy-input">Expresión F(x, y):</label>
           <input type="text" id="fxy-input" placeholder="Ej: x*y + x, (y/x), 2*x*y" value="x*y + x">
         </div>
 
@@ -55,10 +60,10 @@
         <button id="solve-btn" class="btn-primary">Analizar y Resolver</button>
       </div>
 
-      <!-- Resultados y Grafico -->
+      <!-- Resultados y Gráfico -->
       <div class="results-column">
         <div class="steps-card">
-          <h2>Informe de Resolucion</h2>
+          <h2>Informe de Resolución</h2>
           <div id="steps-output"></div>
         </div>
 
@@ -69,6 +74,6 @@
     </main>
   </div>
 
-  <script type="module" src="src/index.js"></script>
+  <script src="src/index.js"></script>
 </body>
 </html>
