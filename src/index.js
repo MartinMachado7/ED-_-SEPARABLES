@@ -1,9 +1,3 @@
-// Importar componentes de Material Web
-import './style.css';
-import functionPlot from 'function-plot';
-import Algebrite from 'algebrite';
-import * as math from 'mathjs';
-
 const fxyInput = document.getElementById('fxy-input');
 const x0Input = document.getElementById('x0-input');
 const y0Input = document.getElementById('y0-input');
@@ -139,29 +133,19 @@ function processDifferentialEquation() {
   }
 }
 
-// Función auxiliar para convertir la sintaxis de Algebrite a sintaxis compatible con function-plot / mathjs
 // Función auxiliar para sanitizar la salida simbólica/numérica de Algebrite
 function cleanForFunctionPlot(expr) {
   if (!expr) return '';
   
   return expr
-    // 1. Eliminar los puntos suspensivos producidos por decimales periódicos de Algebrite (-0.888889... -> -0.888889)
     .replace(/\.\.\./g, '')
-    
-    // 2. Convertir logaritmos naturales (Algebrite usa log, function-plot usa ln)
     .replace(/\blog\b/g, 'ln')
-    
-    // 3. Convertir constantes e exponenciales
     .replace(/exp\(1\)/g, 'e')
-    
-    // 4. Corregir productos implícitos producidos por Algebrite (ej. "2 x" -> "2*x", "x y" -> "x*y")
     .replace(/(\d+)\s+([a-zA-Z])/g, '$1*$2')
     .replace(/([a-zA-Z])\s+([a-zA-Z])/g, '$1*$2')
     .replace(/\)\s+\(/g, ')*(')
     .replace(/(\d+)\s+\(/g, '$1*(')
     .replace(/\)\s+([a-zA-Z])/g, ')*$1')
-    
-    // 5. Eliminar espacios innecesarios
     .replace(/\s+/g, '')
     .trim();
 }
@@ -192,14 +176,14 @@ function plotSolution(fnText, implicitText, x0, y0, a, b, originalExpr) {
       });
     }
 
-    // 2. Punto de la condición inicial (x0, y0)
+    // Punto de la condición inicial (x0, y0)
     dataConfig.push({
       points: [[x0, y0]],
       fnType: 'points',
       graphType: 'scatter'
     });
 
-    // 3. Renderizar gráfica
+    // Renderizar gráfica
     functionPlot({
       target: '#plot',
       width: containerWidth,
@@ -219,6 +203,7 @@ function plotSolution(fnText, implicitText, x0, y0, a, b, originalExpr) {
       </div>`;
   }
 }
+
 function addStep(title, content) {
   const div = document.createElement('div');
   div.className = 'step-block';
