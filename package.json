@@ -1,0 +1,21 @@
+{
+  "name": "ecd_separables",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "@material/web": "^2.5.0",
+    "algebrite": "^1.4.0",
+    "function-plot": "^1.25.4",
+    "mathjs": "^15.2.0"
+  }
+}
